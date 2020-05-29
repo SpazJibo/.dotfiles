@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias vi=vim
-alias python=python3i
+alias python=python3
 
 # Dotfile shortcuts
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
