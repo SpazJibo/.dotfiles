@@ -43,7 +43,8 @@ if executable('rg')
     let g:rg_drive_root='true'
 endif
 
-" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%/.git ls-files -oc --exclude-
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%/.git ls-files -oc --exclude-standard']
+
 let mapleader = " "
 let g:netrw_browse_split=2
 let g:netrw_banner = 0
