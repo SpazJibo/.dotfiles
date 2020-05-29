@@ -102,6 +102,8 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias vi=vim
 alias python=python3i
+
+# Dotfile shortcuts
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ds='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status'
 alias dp='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME push'
