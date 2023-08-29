@@ -30,6 +30,7 @@ Plug 'sbdchd/neoformat'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'codechips/coc-svelte', {'do': 'npm install'}
 Plug 'prettier/vim-prettier', {'do': 'npm install'}
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 colorscheme kanagawa 
@@ -46,6 +47,9 @@ let g:prettier#quickfix_enabled=0
 let g:prettier#autoformat_require_pragma=0
 au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
 
+let g:user_emmet_mode="n"
+let g:user_emmet_leader_key=","
+
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -59,3 +63,19 @@ inoremap <M-s> <Esc>:MarkdownPreviewStop<cr>
 nnoremap <M-s> <Esc>:MarkdownPreviewStop<cr>
 
 let g:neoformat_try_nod_exe=1
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
