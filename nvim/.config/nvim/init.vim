@@ -21,7 +21,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'rebelot/kanagawa.nvim'
-Plug 'jiangmiao/auto-pairs'
 Plug 'honza/vim-snippets'
 Plug 'iamcco/markdown-preview.nvim'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
@@ -29,7 +28,6 @@ Plug 'sbdchd/neoformat'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'codechips/coc-svelte', {'do': 'npm install'}
 Plug 'elixir-lsp/coc-elixir',
-Plug 'prettier/vim-prettier', {'do': 'npm install'}
 Plug 'mattn/emmet-vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
@@ -39,13 +37,10 @@ highlight Normal guibg=NONE ctermbg=NONE
 
 let mapleader = " "
 
-let g:prettier#quickfix_enabled=0
-let g:prettier#autoformat_require_pragma=0
-au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
-
 let g:user_emmet_mode="n"
 let g:user_emmet_leader_key=","
 
+let g:coc_filetype_map = { 'astro': 'html'}
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -58,6 +53,29 @@ nnoremap <c-s> <Esc>:MarkdownPreview<cr>
 inoremap <M-s> <Esc>:MarkdownPreviewStop<cr>
 nnoremap <M-s> <Esc>:MarkdownPreviewStop<cr>
 
+" coc Configuration Section
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+
 :tnoremap <Esc> <C-\><C-n>
 
 let g:neoformat_try_nod_exe=1
@@ -68,12 +86,11 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
 autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall --sync | q
   \| endif
+
+autocmd BufNewFile,BufRead *.astro set syntax=html
+
+autocmd BufWrite *.astro :CocCommand prettier.formatFile
