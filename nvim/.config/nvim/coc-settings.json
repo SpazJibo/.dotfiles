@@ -1,9 +1,0 @@
-{
-    "coc.preferences.formatOnSaveFiletypes": ["javascript", "html", "css", "*.astro"],
-    "prettier.tabWidth": 4,
-    "prettier.arrowParens": "avoid",
-    "prettier.printWidth": 120,
-    "prettier.semi": true,
-    "prettier.disableSuccessMessage": true,
-    "prettier.overrides": [ { "files": "*.astro", "options": { "parser": "html"}}]
-}
