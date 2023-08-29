@@ -22,7 +22,6 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'iamcco/markdown-preview.nvim'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
@@ -37,11 +36,6 @@ colorscheme kanagawa
 highlight Normal guibg=NONE ctermbg=NONE
 
 let mapleader = " "
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z"
-let g:UtilSnipEditSplit="vertical"
 
 let g:prettier#quickfix_enabled=0
 let g:prettier#autoformat_require_pragma=0
