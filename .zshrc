@@ -1,0 +1,1 @@
+/home/spazjibo/dotfiles/config/.zshrc
