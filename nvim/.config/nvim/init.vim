@@ -28,6 +28,7 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'sbdchd/neoformat'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'codechips/coc-svelte', {'do': 'npm install'}
+Plug 'elixir-lsp/coc-elixir',
 Plug 'prettier/vim-prettier', {'do': 'npm install'}
 Plug 'mattn/emmet-vim'
 call plug#end()
