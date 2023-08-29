@@ -5,7 +5,6 @@ local servers = {
   "tsserver",
   "html",
   "cssls",
-  "graphql"
 }
 
 local settings = {
