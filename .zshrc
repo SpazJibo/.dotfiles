@@ -103,3 +103,8 @@ alias pbpaste='xclip -selection clipboard -o'
 alias vi=vim
 alias python=python3i
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias ds='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status'
+alias dp='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME push'
+alias dc='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME commit -m'
+alias da='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME add'
+alias dpull='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull'
