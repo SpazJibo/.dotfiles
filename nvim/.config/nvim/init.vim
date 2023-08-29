@@ -15,17 +15,25 @@ set incsearch
 set scrolloff=8
 set colorcolumn=80
 set signcolumn=yes
+set mouse=a
 
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'gruvbox-community/gruvbox'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 
-colorscheme gruvbox
+colorscheme kanagawa 
 highlight Normal guibg=NONE ctermbg=NONE
 
 let mapleader = " "
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z"
+let g:UtilSnipEditSplit="vertical"
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
