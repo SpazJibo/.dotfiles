@@ -59,3 +59,10 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>ps :RG<SPACE>
+nnoremap <silent> <Leader>+ :vertical resize +5<CR>
+nnoremap <silent> <Leader>- :vertical resize -5<CR>
+
+" YCM
+" GoTo and FixIt
+nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
+nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
