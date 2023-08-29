@@ -55,5 +55,6 @@ yabai -m rule --add app="Microsoft Teams" layer=above manage=off
 yabai -m rule --add app="Preview" layer=above manage=off
 yabai -m rule --add app="Final Cut Pro" layer=above manage=off
 yabai -m rule --add app="Photos" layer=above manage=off
+yabai -m rule --add app="Finder" layer=above manage=off
 
 echo "yabai configuration loaded.."
