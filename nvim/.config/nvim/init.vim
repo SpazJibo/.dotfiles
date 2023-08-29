@@ -26,16 +26,25 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'iamcco/markdown-preview.nvim'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'sbdchd/neoformat'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'codechips/coc-svelte', {'do': 'npm install'}
+Plug 'prettier/vim-prettier', {'do': 'npm install'}
 call plug#end()
 
 colorscheme kanagawa 
 highlight Normal guibg=NONE ctermbg=NONE
 
 let mapleader = " "
+
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z"
 let g:UtilSnipEditSplit="vertical"
+
+let g:prettier#quickfix_enabled=0
+let g:prettier#autoformat_require_pragma=0
+au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -48,3 +57,5 @@ nnoremap <c-s> <Esc>:MarkdownPreview<cr>
 
 inoremap <M-s> <Esc>:MarkdownPreviewStop<cr>
 nnoremap <M-s> <Esc>:MarkdownPreviewStop<cr>
+
+let g:neoformat_try_nod_exe=1
