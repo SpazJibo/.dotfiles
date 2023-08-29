@@ -31,6 +31,7 @@ Plug 'codechips/coc-svelte', {'do': 'npm install'}
 Plug 'elixir-lsp/coc-elixir',
 Plug 'prettier/vim-prettier', {'do': 'npm install'}
 Plug 'mattn/emmet-vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 colorscheme kanagawa 
@@ -56,6 +57,8 @@ nnoremap <c-s> <Esc>:MarkdownPreview<cr>
 
 inoremap <M-s> <Esc>:MarkdownPreviewStop<cr>
 nnoremap <M-s> <Esc>:MarkdownPreviewStop<cr>
+
+:tnoremap <Esc> <C-\><C-n>
 
 let g:neoformat_try_nod_exe=1
 
