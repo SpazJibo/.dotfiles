@@ -75,3 +75,6 @@ keymap("n", "<leader>gr", "<cmd>Telescope lsp_references<cr>", opts)
 -- Nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<cr>", opts)
+
+-- Buffer Command 
+keymap("n", "<leader>w", ":Bdelete<cr>", opts)

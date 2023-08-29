@@ -52,6 +52,7 @@ return packer.startup(function(use)
   use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
   use "akinsho/toggleterm.nvim" -- Terminal toggler 
+  use "famiu/bufdelete.nvim" -- buff delete with better behavior
 
    -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
