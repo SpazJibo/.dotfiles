@@ -110,3 +110,8 @@ export NVM_DIR="$HOME/.nvm"
 eval `keychain --eval --agents ssh id_ed25519`
 
 eval "$(rbenv init - zsh)"
+
+export ANDROID_HOME="/Users/spazjibo/Library/Android/sdk"
+export ANDROID_SDK_ROOT="/Users/spazjibo/Library/Android/sdk"
+export ANDROID_AVD_HOME="/Users/spazjibo/.android/avd"
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
