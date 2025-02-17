@@ -44,3 +44,10 @@ vim.keymap.set("n", "<space>tr", function()
 
   vim.fn.chansend(job_id, { current_command .. "\r\n" })
 end)
+
+vim.cmd [[
+  highlight Normal guibg=none
+  highlight NonText guibg=none
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+]]
