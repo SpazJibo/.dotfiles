@@ -27,6 +27,14 @@ return {
       },
 
       signature = { enabled = true },
+
+      sources = {
+        providers = {
+          cmdline = {
+            enabled = false
+          }
+        }
+      },
     },
   }
 }
