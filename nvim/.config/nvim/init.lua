@@ -1,5 +1,6 @@
 require("config.lazy")
 
+vim.opt.guifont = 'JetBrainsMono Nerd Font'
 vim.opt.shiftwidth = 4
 vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
@@ -12,6 +13,8 @@ vim.keymap.set("v", "<space>x", ":lua<CR>")
 vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
 
+-- Launch Oil
+vim.keymap.set("n", "-", "<cmd>Oil<CR>")
 
 vim.api.nvim_create_autocmd('TermOpen', {
   group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
@@ -51,3 +54,5 @@ vim.cmd [[
   highlight Normal ctermbg=none
   highlight NonText ctermbg=none
 ]]
+
+vim.o.conceallevel = 1
