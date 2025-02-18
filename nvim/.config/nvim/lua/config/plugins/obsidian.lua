@@ -24,6 +24,14 @@ return {
         path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Reboot 2025/",
       },
     },
+    config = function()
+      require("obsidian").setup({
+        daily_notes = "Daily Notes",
+        date_format = "%Y-%m-%d",
+        default_tags = { "daily-notes" },
+        template = { "zTemplates/Daily Note Template" }
+      })
+    end,
 
     -- see below for full list of options 👇
   },
