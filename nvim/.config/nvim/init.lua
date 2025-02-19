@@ -1,10 +1,15 @@
 require("config.lazy")
 
 vim.opt.guifont = 'JetBrainsMono Nerd Font'
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
 vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
 vim.opt.relativenumber = true
+
+vim.opt.ai = true    -- Auto indent
+vim.opt.si = true    -- Smart indent
+vim.opt.wrap = false -- No Wrap
 
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<space>x", ":.lua<CR>")
