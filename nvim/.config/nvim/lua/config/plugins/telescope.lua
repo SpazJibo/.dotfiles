@@ -10,10 +10,10 @@ return {
       require('telescope').setup {
         pickers = {
           find_files = {
-            theme = "ivy"
+            theme = "dropdown"
           },
           grep_strings = {
-            theme = "ivy"
+            theme = "dropdown"
           }
         },
         extensions = {

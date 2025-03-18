@@ -57,4 +57,4 @@ end
 -- Create a floating window with default dimensions
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
 
-vim.keymap.set("n", "<space>tt", toggle_terminal)
+vim.keymap.set("n", "<space><space>t", toggle_terminal)
