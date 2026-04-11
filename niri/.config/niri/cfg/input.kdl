@@ -21,6 +21,7 @@ input {
         // uncomment the lines below.
         //accel-profile "flat"
         //accel-speed 0.0
+        natural-scroll // Enable natural (macOS-style) scrolling
     }
 
     focus-follows-mouse // Automatically focus windows under the mouse pointer
