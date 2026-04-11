@@ -69,8 +69,8 @@ inner.horizontal = 8
 inner.vertical =   8 
 outer.left =       8 
 outer.bottom =     8
-outer.top =        32 # External Monitor
-# outer.top =        8 # Macbook Display 
+# outer.top =        32 # External Monitor
+outer.top =        8 # Macbook Display 
 outer.right =      8 
 
 # 'main' binding mode declaration
@@ -222,3 +222,26 @@ run= [
   "layout floating",
 ]
 
+[[on-window-detected]]
+if.app-id="com.epicgames.EpicGamesLauncher"
+run= [
+  "layout floating",
+]
+
+[[on-window-detected]]
+if.app-id="org.godotengine.godot"
+run= [
+  "layout floating",
+]
+
+[[on-window-detected]]
+if.app-id="com.valvesoftware.steam"
+run= [
+  "layout floating",
+]
+
+[[on-window-detected]]
+if.app-id="com.apple.ActivityMonitor"
+run= [
+  "layout floating",
+]
