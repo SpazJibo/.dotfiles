@@ -1,5 +1,6 @@
 background-opacity=0.9
 background=#351651
+background-blur=true
 
 font-family = "Hack Nerd Font"
 # font-family = "OpenDyslexic Nerd Font"

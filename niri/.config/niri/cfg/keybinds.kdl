@@ -63,7 +63,7 @@ binds {
     Mod+Shift+UP                        { focus-monitor-up; }
     Mod+Shift+Down                      { focus-monitor-down; }
 
-    Mod+Shift+CTRL+Left                 { move-column-to-monitor-left; }
+    Mod+Shift+CTRL+H                    { move-column-to-monitor-left; }
     Mod+Shift+CTRL+Right                { move-column-to-monitor-right; }
     Mod+Shift+CTRL+UP                   { move-column-to-monitor-up; }
     Mod+Shift+CTRL+Down                 { move-column-to-monitor-down; }
@@ -134,4 +134,9 @@ binds {
     CTRL+ALT+Delete                     { quit; } // Also quits Niri
     Mod+Shift+P                         { power-off-monitors; } // Turn off screens (useful for OLED or privacy)
     Mod+O                               repeat=false { toggle-overview; }
+
+    // ─── Open below  ───
+    Mod+Shift+H                           { consume-or-expel-window-left; }
+    Mod+Shift+L                           { consume-or-expel-window-right; }
 }
+
