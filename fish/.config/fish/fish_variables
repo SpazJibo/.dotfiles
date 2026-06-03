@@ -1,7 +1,12 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export SSH_AUTH_SOCK:/run/user/1000/ssh\x2dagent\x2esocket
+SETUVAR --export EDITOR:nvim
+SETUVAR --export GIT_EDITOR:nvim
+SETUVAR --export SSH_AGENT_PID:83153
+SETUVAR --export SSH_AUTH_SOCK:/home/spazjibo/\x2essh/agent/s\x2ebSFiE9vxRV\x2eagent\x2eh5B3QfrjnR
 SETUVAR --export SSH_AUTHj_SOCK:/run/user/1000/ssh\x2dagent\x2esocket
+SETUVAR --export SYSTEMD_EDITOR:nvim
+SETUVAR --export VISUAL:nvim
 SETUVAR __done_min_cmd_duration:10000
 SETUVAR __done_notification_urgency_level:low
 SETUVAR __fish_initialized:4300
@@ -74,6 +79,7 @@ SETUVAR pure_symbol_reverse_prompt:\u276e
 SETUVAR pure_symbol_ssh_prefix:
 SETUVAR pure_symbol_title_bar_separator:\x2d
 SETUVAR pure_symbol_virtualenv_prefix:
+SETUVAR pure_system_time_format:\x2b\x25T
 SETUVAR pure_threshold_command_duration:5
 SETUVAR pure_truncate_prompt_current_directory_keeps:\x2d1
 SETUVAR pure_truncate_window_title_current_directory_keeps:\x2d1

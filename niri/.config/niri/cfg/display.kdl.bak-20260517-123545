@@ -4,9 +4,7 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 
 output "HDMI-A-1" {
-    // Temporarily force 60 Hz while isolating niri/libgallium crashes on the mixed NVIDIA+iGPU setup.
-    // The TV still advertises 120 Hz, but 4K120 + the iGPU-driven Kamvas/phantom connector is a plausible stressor.
-    mode "3840x2160@60.000"
+    mode "3840x2160@119.880" // Set resolution and refresh rate
     scale 1 // No scaling (use 2 for HiDPI)
     position x=0 y=0
 }
@@ -15,7 +13,7 @@ output "DP-4" {
   off
 }
 
-output "DP-1" {
+output "DP-5" {
   scale 1.5
   position x=0 y=2160
 }
