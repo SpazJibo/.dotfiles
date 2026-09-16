@@ -1,0 +1,116 @@
+# Cyberpunk-themed sketchybar config.
+# Neon cyan / magenta on near-black glass, Apple logo top-left next to spaces.
+# For the full option reference: https://felixkratz.github.io/SketchyBar/config
+
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+##### Cyberpunk Palette #####
+BAR_COLOR=0xd0101018
+BAR_BORDER=0xff00fff2
+
+NEON_CYAN=0xff00fff2
+NEON_MAGENTA=0xffff00c8
+NEON_PURPLE=0xffbf5aff
+FG_WHITE=0xffe6faff
+DIM=0xff7a8a9a
+
+ITEM_BG=0x2000fff2
+ITEM_BG_SELECTED=0x40ff00c8
+
+##### Bar Appearance #####
+
+sketchybar --bar position=top height=40 blur_radius=35 color="$BAR_COLOR" \
+           border_width=2 border_color="$BAR_BORDER" \
+           corner_radius=0 shadow=on y_offset=0
+
+##### Changing Defaults #####
+
+default=(
+  padding_left=5
+  padding_right=5
+  icon.font="Hack Nerd Font:Bold:17.0"
+  label.font="Hack Nerd Font:Bold:14.0"
+  icon.color=$NEON_CYAN
+  label.color=$FG_WHITE
+  icon.padding_left=4
+  icon.padding_right=4
+  label.padding_left=4
+  label.padding_right=4
+  icon.shadow.drawing=on
+  icon.shadow.color=$NEON_CYAN
+  icon.shadow.distance=0
+  label.shadow.drawing=on
+  label.shadow.color=$NEON_MAGENTA
+  label.shadow.distance=0
+)
+sketchybar --default "${default[@]}"
+
+##### Apple Logo (top left, before spaces) #####
+
+sketchybar --add item apple_logo left \
+           --set apple_logo icon= \
+                            icon.font="SF Pro:Bold:19.0" \
+                            icon.color=$NEON_CYAN \
+                            icon.padding_left=10 \
+                            icon.padding_right=10 \
+                            label.drawing=off \
+                            background.drawing=off \
+                            click_script="open -a 'System Settings'"
+
+##### Mission Control Space Indicators #####
+
+SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
+for i in "${!SPACE_ICONS[@]}"
+do
+  sid="$(($i+1))"
+  space=(
+    space="$sid"
+    icon="${SPACE_ICONS[i]}"
+    icon.color=$NEON_CYAN
+    icon.padding_left=7
+    icon.padding_right=7
+    background.color=$ITEM_BG_SELECTED
+    background.border_width=1
+    background.border_color=$NEON_MAGENTA
+    background.corner_radius=5
+    background.height=25
+    label.drawing=off
+    script="$PLUGIN_DIR/space.sh"
+    click_script="yabai -m space --focus $sid"
+  )
+  sketchybar --add space space."$sid" left --set space."$sid" "${space[@]}"
+done
+
+sketchybar --add item space_separator left \
+           --set space_separator icon="::" label.drawing=off \
+                                  icon.color=$NEON_PURPLE icon.padding_left=8 icon.padding_right=8
+
+##### Left Items #####
+
+sketchybar --add item chevron left \
+           --set chevron icon= label.drawing=off icon.color=$NEON_PURPLE \
+           --add item front_app left \
+           --set front_app icon.drawing=off label.color=$NEON_CYAN \
+                            script="$PLUGIN_DIR/front_app.sh" \
+           --subscribe front_app front_app_switched
+
+##### Right Items #####
+
+sketchybar --add item clock right \
+           --set clock update_freq=1 icon= icon.color=$NEON_MAGENTA \
+                        label.font="SF Pro:Semibold:13.0" \
+                        script="$PLUGIN_DIR/clock.sh" \
+                        click_script="open -a 'Calendar'" \
+           --add item volume right \
+           --set volume icon.color=$NEON_CYAN script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change \
+           --add item battery right \
+           --set battery update_freq=120 icon.color=$NEON_PURPLE \
+                          script="$PLUGIN_DIR/battery.sh" \
+           --subscribe battery system_woke power_source_change \
+           --add item cpu right \
+           --set cpu update_freq=5 icon.color=$NEON_CYAN \
+                     script="$PLUGIN_DIR/cpu.sh"
+
+##### Force all scripts to run the first time (never do this in a script) #####
+sketchybar --update
