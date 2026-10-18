@@ -33,6 +33,21 @@ do
         '--stdio',
       },
     })
+  else
+    -- Global .NET tools may not be on PATH in desktop-launched terminals.
+    local roslyn_tool = vim.fn.expand('~/.dotnet/tools/roslyn-language-server')
+    if vim.fn.executable(roslyn_tool) == 1 then
+      vim.lsp.config('roslyn_ls', {
+        cmd = {
+          roslyn_tool,
+          '--logLevel',
+          'Information',
+          '--extensionLogDirectory',
+          vim.fs.joinpath(vim.uv.os_tmpdir(), 'roslyn_ls/logs'),
+          '--stdio',
+        },
+      })
+    end
   end
 end
 
