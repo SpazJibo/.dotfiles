@@ -11,3 +11,5 @@ The `hyprland` Stow package contains the six active personal Lua overrides under
 The monitor names, pen mapping, and device-specific input settings reflect this
 machine; review them before deploying to different hardware. The system-owned
 Omarchy defaults are not included.
+
+Updated to test.
