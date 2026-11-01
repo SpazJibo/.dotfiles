@@ -72,6 +72,15 @@ yabai -m signal --add event=window_created app="^Music$" \
 # System Settings
 yabai -m rule --add app="^System Settings$" manage=off
 
+# Generic: whenever ANY new window is created, jump focus to its space and
+# to the window itself. This makes focus follow new app launches onto
+# whatever space they land on (e.g. Obsidian opening on space 4), without
+# needing a per-app rule+signal pair like Ghostty/Music above. Runs in
+# addition to those more specific signals — harmless redundancy for apps
+# that already have their own.
+yabai -m signal --add event=window_created \
+    action="yabai -m space --focus \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq '.space'); yabai -m window --focus \$YABAI_WINDOW_ID"
+
 # Finder: float instead of tiling
 yabai -m rule --add app="^Finder$" manage=off
 

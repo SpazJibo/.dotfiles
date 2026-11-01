@@ -182,3 +182,19 @@ ctrl + alt - left  : yabai -m display --focus prev
 
 # toggle the focused window between floating and tiled
 ctrl + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+# ############################################################### #
+# SWITCH VIRTUAL DESKTOPS (SPACES)                                 #
+# ############################################################### #
+
+# jump directly to a space by index (1-4 on display 1, 5-7 on display 2)
+cmd + alt - 1 : yabai -m space --focus 1
+cmd + alt - 2 : yabai -m space --focus 2
+cmd + alt - 3 : yabai -m space --focus 3
+cmd + alt - 4 : yabai -m space --focus 4
+cmd + alt - 5 : yabai -m space --focus 5
+cmd + alt - 6 : yabai -m space --focus 6
+cmd + alt - 7 : yabai -m space --focus 7
+
+# toggle back to the previously focused space
+cmd + alt - x : yabai -m space --focus recent
