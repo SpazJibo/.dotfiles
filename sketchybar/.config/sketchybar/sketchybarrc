@@ -21,7 +21,7 @@ ITEM_BG_SELECTED=0x40cc44ee
 
 sketchybar --bar position=top height=40 blur_radius=35 color="$BAR_COLOR" \
            border_width=2 border_color="$BAR_BORDER" \
-           corner_radius=0 shadow=on y_offset=0
+           corner_radius=12 shadow=on y_offset=4 margin=8
 
 ##### Changing Defaults #####
 

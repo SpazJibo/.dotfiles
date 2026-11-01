@@ -1,11 +1,31 @@
 background-opacity=0.9
 background=#351651
-background-blur=true
 
-font-family = "Hack Nerd Font"
+font-family = "Hack nerd Font Propo"
+
 # font-family = "OpenDyslexic Nerd Font"
 # font-family = "Osaka-Mono"
 # font-family = "Ubuntu Sans Mono Regular Medi"
 # font-family = "SpaceMono Nerd Font"
 # font-family = "ProggyCleanSZ Nerd Font"
-font-size = 18
+font-size = 20 
+
+macos-titlebar-style = hidden
+
+# Ctrl+Space defaults to sending a raw NUL byte (legacy terminal encoding).
+# Hermes's TUI would normally disambiguate that via the Kitty keyboard
+# protocol, but it deliberately skips the CSI >1u push on Ghostty
+# (skipKittyKeyboardProtocol() in ui-tui/packages/hermes-ink/src/ink/
+# terminal.ts — Ghostty's disambiguate mode strips Alt from Backspace) and
+# relies on modifyOtherKeys instead, which Ghostty doesn't emit for
+# Ctrl+Space. So the NUL arrives raw, and parse-keypress.ts:821 decodes it
+# as String.fromCharCode(0 + 97 - 1) = "`" — the backtick that leaks into
+# the input buffer.
+#
+# Send the modifyOtherKeys form explicitly instead: ESC [ 27 ; 5 ; 32 ~
+# (modifier 5 = ctrl, keycode 32 = space). Hermes parses that via
+# MODIFY_OTHER_KEYS_RE, maps keycode 32 -> "space", and input-event.ts
+# turns it into a literal " " with ctrl set — exactly what
+# isVoiceToggleKey() wants for voice.record_key: ctrl+space.
+# See ~/.hermes/config.yaml (voice.record_key).
+keybind = ctrl+space=text:\x1b[27;5;32~
