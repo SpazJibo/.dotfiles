@@ -8,6 +8,10 @@ vim.pack.add({
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/sphamba/smear-cursor.nvim" },
   { src = "https://github.com/iamcco/markdown-preview.nvim" },
+  { src = "https://github.com/obsidian-nvim/obsidian.nvim", version = 'v3.16.9' },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = 'main' },
+  { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
+  { src = "https://github.com/folke/snacks.nvim" },
 })
 
 -- markdown-preview.nvim ships no vim.pack build hook (that's a lazy.nvim-only

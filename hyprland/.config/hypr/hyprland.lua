@@ -30,3 +30,11 @@ require("default.hypr.toggles")
 
 -- Give the main Steam client more room without enlarging its dialogs or games.
 o.window({ class = "^steam$", title = "^Steam$" }, { center = true, size = { 1900, 1200 } })
+
+-- Apply topology policy last, after Omarchy's internal-panel toggle rules.
+local dock_state = os.getenv("HOME") .. "/.config/hypr/dock-state.lua"
+local dock_file = io.open(dock_state, "r")
+if dock_file then
+  dock_file:close()
+  dofile(dock_state)
+end

@@ -74,6 +74,8 @@ vim.lsp.config('lua_ls', {
   end,
 })
 
+require('markdown-oxide-config')
+
 vim.lsp.enable({
   'roslyn_ls',
   'ts_ls',
