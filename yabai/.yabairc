@@ -60,14 +60,13 @@ yabai -m rule --add app="^Ghostty$" space=2
 yabai -m signal --add event=window_created app="^Ghostty$" \
     action="yabai -m space --focus 2; yabai -m window --focus \$YABAI_WINDOW_ID"
 
-# Apple Music gets its own space and manages its own layout there
-yabai -m rule --add app="^Music$" space=3
+# Apple Music: float instead of tiling, wherever it's launched from
+yabai -m rule --add app="^Music$" manage=off
 
-# When Music's window is created (e.g. cold launch via skhd), jump to it
-# immediately — otherwise the first launch leaves focus behind since the
-# window doesn't exist yet when the launch command fires.
+# Move Music's newly-created window back to the space that was focused
+# before launch — see scripts/launch-music-floating.sh / route-music.sh.
 yabai -m signal --add event=window_created app="^Music$" \
-    action="yabai -m space --focus 3; yabai -m window --focus \$YABAI_WINDOW_ID"
+    action="/Users/spazjibo/.dotfiles/yabai/scripts/route-music.sh \$YABAI_WINDOW_ID"
 
 # Obsidian gets its own space (Desktop 3) and manages its own layout there
 yabai -m rule --add app="^Obsidian$" space=3
