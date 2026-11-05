@@ -69,6 +69,15 @@ yabai -m rule --add app="^Music$" space=3
 yabai -m signal --add event=window_created app="^Music$" \
     action="yabai -m space --focus 3; yabai -m window --focus \$YABAI_WINDOW_ID"
 
+# Obsidian gets its own space (Desktop 3) and manages its own layout there
+yabai -m rule --add app="^Obsidian$" space=3
+
+# When Obsidian's window is created (e.g. cold launch via skhd), jump to it
+# immediately — otherwise the first launch leaves focus behind since the
+# window doesn't exist yet when the launch command fires.
+yabai -m signal --add event=window_created app="^Obsidian$" \
+    action="yabai -m space --focus 3; yabai -m window --focus \$YABAI_WINDOW_ID"
+
 # System Settings
 yabai -m rule --add app="^System Settings$" manage=off
 

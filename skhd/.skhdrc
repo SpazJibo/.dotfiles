@@ -160,6 +160,9 @@ ctrl + alt - m : open -a "Music"
 # activate Foundry Virtual Tabletop (launches it if not running)
 ctrl + alt - v : open -a "Foundry Virtual Tabletop"
 
+# activate Obsidian (launches it if not running)
+ctrl + alt - o : open -a "Obsidian"
+
 # ############################################################### #
 # MOVE WINDOWS BETWEEN DISPLAYS                                    #
 # ############################################################### #

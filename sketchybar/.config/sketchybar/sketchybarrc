@@ -119,7 +119,10 @@ sketchybar --add item clock right \
                      script="$PLUGIN_DIR/gpu.sh" \
            --add item music right \
            --set music update_freq=2 icon.color=$NEON_PURPLE \
-                       script="$PLUGIN_DIR/music.sh"
+                       script="$PLUGIN_DIR/music.sh" \
+           --add item voxtype right \
+           --set voxtype update_freq=1 icon.color=$DIM \
+                          script="$PLUGIN_DIR/voxtype.sh"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
