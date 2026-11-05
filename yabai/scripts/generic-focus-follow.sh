@@ -21,5 +21,7 @@ case "$app" in
 esac
 
 target_space=$(yabai -m query --windows --window "$window_id" | jq '.space')
-yabai -m space --focus "$target_space"
+# `space --focus` exits non-zero (harmlessly) when that space is already
+# focused — don't let `set -e` abort before the window-focus call below.
+yabai -m space --focus "$target_space" || true
 yabai -m window --focus "$window_id"

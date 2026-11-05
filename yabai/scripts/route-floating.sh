@@ -22,6 +22,17 @@ else
 fi
 
 if [ -n "$window_id" ]; then
-    yabai -m window "$window_id" --space "$target_space"
+    yabai -m window "$window_id" --space "$target_space" || true
 fi
-yabai -m space --focus "$target_space"
+# `space --focus` exits non-zero (harmlessly) when that space is already
+# focused — don't let `set -e` abort the script before the window-focus
+# step below runs.
+yabai -m space --focus "$target_space" || true
+# Give the space-switch a beat to settle before stealing window focus —
+# without this, the window focus below gets silently clobbered once the
+# space-switch animation/transition finishes and re-asserts whatever
+# window was previously active there.
+sleep 0.3
+if [ -n "$window_id" ]; then
+    yabai -m window --focus "$window_id"
+fi
