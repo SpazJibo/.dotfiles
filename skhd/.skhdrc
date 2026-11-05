@@ -163,6 +163,9 @@ ctrl + alt - v : open -a "Foundry Virtual Tabletop"
 # activate Obsidian (launches it if not running)
 ctrl + alt - o : open -a "Obsidian"
 
+# activate Apple Notes (launches it if not running)
+ctrl + alt - n : open -a "Notes"
+
 # ############################################################### #
 # MOVE WINDOWS BETWEEN DISPLAYS                                    #
 # ############################################################### #

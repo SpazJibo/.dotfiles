@@ -78,6 +78,13 @@ yabai -m rule --add app="^Obsidian$" space=3
 yabai -m signal --add event=window_created app="^Obsidian$" \
     action="yabai -m space --focus 3; yabai -m window --focus \$YABAI_WINDOW_ID"
 
+# Apple Notes: space depends on monitor setup (Kamvas Pro 19 attached vs
+# not), so it can't be a static `rule --add ... space=N`. Route it via a
+# signal that calls out to a helper script instead — see
+# scripts/route-notes.sh for the logic.
+yabai -m signal --add event=window_created app="^Notes$" \
+    action="/Users/spazjibo/.dotfiles/yabai/scripts/route-notes.sh \$YABAI_WINDOW_ID"
+
 # System Settings
 yabai -m rule --add app="^System Settings$" manage=off
 
