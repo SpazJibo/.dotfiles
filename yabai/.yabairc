@@ -64,9 +64,14 @@ yabai -m signal --add event=window_created app="^Ghostty$" \
 yabai -m rule --add app="^Music$" manage=off
 
 # Move Music's newly-created window back to the space that was focused
-# before launch — see scripts/launch-music-floating.sh / route-music.sh.
+# before launch — see scripts/launch-floating.sh / route-floating.sh.
 yabai -m signal --add event=window_created app="^Music$" \
-    action="/Users/spazjibo/.dotfiles/yabai/scripts/route-music.sh \$YABAI_WINDOW_ID"
+    action="/Users/spazjibo/.dotfiles/yabai/scripts/route-floating.sh Music \$YABAI_WINDOW_ID"
+
+# Apple Podcasts: same deal — float wherever it's launched from
+yabai -m rule --add app="^Podcasts$" manage=off
+yabai -m signal --add event=window_created app="^Podcasts$" \
+    action="/Users/spazjibo/.dotfiles/yabai/scripts/route-floating.sh Podcasts \$YABAI_WINDOW_ID"
 
 # Obsidian gets its own space (Desktop 3) and manages its own layout there
 yabai -m rule --add app="^Obsidian$" space=3

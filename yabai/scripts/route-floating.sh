@@ -1,16 +1,16 @@
 #!/usr/bin/env sh
 #
-# Companion to launch-music-floating.sh: on Music's window_created signal,
-# move the (floating) window to the space that was focused right before
+# Companion to launch-floating.sh: on a floating app's window_created
+# signal, move the new window to the space that was focused right before
 # launch, instead of leaving it wherever the catch-all rule placed it.
 #
-# Invoked from a yabai `window_created` signal for Music (see .yabairc),
-# which passes the new window's id as $1.
+# Usage (from a yabai signal action): route-floating.sh "AppName" $YABAI_WINDOW_ID
 #
 set -eu
 
-window_id="${1:-}"
-stash=/tmp/yabai-music-target-space
+app_name="${1:?usage: route-floating.sh \"AppName\" window_id}"
+window_id="${2:-}"
+stash="/tmp/yabai-floating-target-space-${app_name}"
 
 if [ -f "$stash" ]; then
     target_space=$(cat "$stash")

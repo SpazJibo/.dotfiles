@@ -155,7 +155,10 @@ ctrl + alt - g : open -a Ghostty
 ctrl + alt - b : open -a "Google Chrome"
 
 # activate Apple Music (launches it if not running, floats wherever you are)
-ctrl + alt - m : /Users/spazjibo/.dotfiles/yabai/scripts/launch-music-floating.sh
+ctrl + alt - m : /Users/spazjibo/.dotfiles/yabai/scripts/launch-floating.sh Music
+
+# activate Apple Podcasts (launches it if not running, floats wherever you are)
+ctrl + alt - p : /Users/spazjibo/.dotfiles/yabai/scripts/launch-floating.sh Podcasts
 
 # activate Foundry Virtual Tabletop (launches it if not running)
 ctrl + alt - v : open -a "Foundry Virtual Tabletop"
