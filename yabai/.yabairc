@@ -92,14 +92,17 @@ yabai -m signal --add event=window_created app="^Notes$" \
 # System Settings
 yabai -m rule --add app="^System Settings$" manage=off
 
-# Generic: whenever ANY new window is created, jump focus to its space and
-# to the window itself. This makes focus follow new app launches onto
-# whatever space they land on (e.g. Obsidian opening on space 4), without
-# needing a per-app rule+signal pair like Ghostty/Music above. Runs in
-# addition to those more specific signals — harmless redundancy for apps
-# that already have their own.
+# Generic: whenever a new window is created for an app WITHOUT its own
+# dedicated signal above, jump focus to its space and to the window itself.
+# The exclusion of apps with dedicated signals (Ghostty, Music, Podcasts,
+# Obsidian, Notes) lives inside generic-focus-follow.sh, not in this
+# pattern — yabai's app= matching has no negative-lookahead support, so
+# matching everything here and bailing out early in the script for those
+# apps is the only way to avoid racing their dedicated signal (which can
+# win and snap focus back to wherever the catch-all rule initially placed
+# the window, usually Desktop 1).
 yabai -m signal --add event=window_created \
-    action="yabai -m space --focus \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq '.space'); yabai -m window --focus \$YABAI_WINDOW_ID"
+    action="/Users/spazjibo/.dotfiles/yabai/scripts/generic-focus-follow.sh \$YABAI_WINDOW_ID"
 
 # Finder: float instead of tiling
 yabai -m rule --add app="^Finder$" manage=off
