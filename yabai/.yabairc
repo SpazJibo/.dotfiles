@@ -89,6 +89,11 @@ yabai -m signal --add event=window_created app="^Obsidian$" \
 yabai -m signal --add event=window_created app="^Notes$" \
     action="/Users/spazjibo/.dotfiles/yabai/scripts/route-notes.sh \$YABAI_WINDOW_ID"
 
+# Rex Beta gets its own space (Desktop 4), zoomed to fill it on launch
+yabai -m rule --add app="^Rex Beta$" space=4
+yabai -m signal --add event=window_created app="^Rex Beta$" \
+    action="/Users/spazjibo/.dotfiles/yabai/scripts/route-rex.sh \$YABAI_WINDOW_ID"
+
 # System Settings
 yabai -m rule --add app="^System Settings$" manage=off
 
