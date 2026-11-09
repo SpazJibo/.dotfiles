@@ -55,10 +55,10 @@ yabai -m rule --add app="^.*$" space=1
 yabai -m rule --add app="^Ghostty$" space=2
 
 # When Ghostty's window is created (e.g. cold launch via skhd), jump to it
-# immediately — otherwise the first launch leaves focus behind since the
-# window doesn't exist yet when the launch command fires.
+# and zoom it to fill space 2 — otherwise the first launch leaves focus
+# behind since the window doesn't exist yet when the launch command fires.
 yabai -m signal --add event=window_created app="^Ghostty$" \
-    action="yabai -m space --focus 2; yabai -m window --focus \$YABAI_WINDOW_ID"
+    action="/Users/spazjibo/.dotfiles/yabai/scripts/route-zoom-to-space.sh \$YABAI_WINDOW_ID 2"
 
 # Apple Music: float instead of tiling, wherever it's launched from
 yabai -m rule --add app="^Music$" manage=off
@@ -89,10 +89,10 @@ yabai -m signal --add event=window_created app="^Obsidian$" \
 yabai -m signal --add event=window_created app="^Notes$" \
     action="/Users/spazjibo/.dotfiles/yabai/scripts/route-notes.sh \$YABAI_WINDOW_ID"
 
-# Rex Beta gets its own space (Desktop 4), zoomed to fill it on launch
-yabai -m rule --add app="^Rex Beta$" space=4
+# Rex Beta shares Ghostty's space (Desktop 2), zoomed to fill it on launch
+yabai -m rule --add app="^Rex Beta$" space=2
 yabai -m signal --add event=window_created app="^Rex Beta$" \
-    action="/Users/spazjibo/.dotfiles/yabai/scripts/route-rex.sh \$YABAI_WINDOW_ID"
+    action="/Users/spazjibo/.dotfiles/yabai/scripts/route-zoom-to-space.sh \$YABAI_WINDOW_ID 2"
 
 # System Settings
 yabai -m rule --add app="^System Settings$" manage=off
