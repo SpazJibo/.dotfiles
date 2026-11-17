@@ -57,6 +57,11 @@
       "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
+    "obsidian-tasks.nvim": {
+      "rev": "e5060c8ea197fb5fe9213ae440d34df4ac827e18",
+      "src": "https://github.com/snapwich/obsidian-tasks.nvim",
+      "version": "'e5060c8ea197fb5fe9213ae440d34df4ac827e18'"
+    },
     "obsidian.nvim": {
       "rev": "a562bedd7b418a289b005cb4c62b1fe79066253b",
       "src": "https://github.com/obsidian-nvim/obsidian.nvim",

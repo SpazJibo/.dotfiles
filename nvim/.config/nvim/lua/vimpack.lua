@@ -9,6 +9,7 @@ vim.pack.add({
   { src = "https://github.com/sphamba/smear-cursor.nvim" },
   { src = "https://github.com/iamcco/markdown-preview.nvim" },
   { src = "https://github.com/obsidian-nvim/obsidian.nvim", version = 'v3.16.9' },
+  { src = "https://github.com/snapwich/obsidian-tasks.nvim", version = 'e5060c8ea197fb5fe9213ae440d34df4ac827e18' },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = 'main' },
   { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
   { src = "https://github.com/folke/snacks.nvim" },

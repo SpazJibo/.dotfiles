@@ -13,3 +13,4 @@ fi
 TOTAL="$(echo "$USER_PCT $SYS_PCT" | awk '{printf "%.0f", $1 + $2}')"
 
 sketchybar --set "$NAME" icon="󰻠" label="${TOTAL}%"
+sketchybar --push "$NAME" "$(awk -v n="$TOTAL" 'BEGIN {printf "%.4f", n/100}')"

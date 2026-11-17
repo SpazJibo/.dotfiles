@@ -2,7 +2,8 @@
 
 # Weather via wttr.in (no API key). Refreshed on a timer via update_freq.
 
-WEATHER="$(curl -s --max-time 5 "wttr.in/?format=%C+%t")"
+# Pin to Belton, Missouri; u explicitly requests Fahrenheit.
+WEATHER="$(curl -s --max-time 5 "https://wttr.in/Belton,MO?u&format=%C+%t")"
 
 if [ -z "$WEATHER" ]; then
   exit 0

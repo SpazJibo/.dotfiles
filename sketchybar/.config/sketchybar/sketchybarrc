@@ -19,9 +19,12 @@ ITEM_BG_SELECTED=0x40cc44ee
 
 ##### Bar Appearance #####
 
-sketchybar --bar position=top height=40 blur_radius=35 color="$BAR_COLOR" \
+# 50pt height closely surrounds the built-in display's 47.5pt camera safe area.
+# With the 4pt offset, reserve 54pt at the top in yabai as well.
+# Keep a 200pt center gap for the camera/island; music uses the notch-left (q) bank.
+sketchybar --bar position=top height=50 notch_width=200 blur_radius=35 color="$BAR_COLOR" \
            border_width=2 border_color="$BAR_BORDER" \
-           corner_radius=12 shadow=on y_offset=4 margin=8
+           corner_radius=24 shadow=off y_offset=4 margin=12
 
 ##### Changing Defaults #####
 
@@ -111,13 +114,29 @@ sketchybar --add item clock right \
            --set battery update_freq=120 icon.color=$NEON_PURPLE \
                           script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change \
-           --add item cpu right \
-           --set cpu update_freq=5 icon.color=$NEON_CYAN \
+           --add graph cpu right 36 \
+           --set cpu update_freq=2 icon.color=$NEON_CYAN \
+                     graph.color=$NEON_CYAN graph.fill_color=0x40ff3355 \
+                     graph.line_width=1.5 background.drawing=on background.height=24 background.color=0x00000000 \
+                     label.font="Hack Nerd Font:Bold:11.0" label.width=34 \
                      script="$PLUGIN_DIR/cpu.sh" \
-           --add item gpu right \
-           --set gpu update_freq=5 icon.color=$NEON_MAGENTA \
+                     click_script="open -a 'Activity Monitor'" \
+           --add graph gpu right 36 \
+           --set gpu update_freq=2 icon.color=$NEON_MAGENTA \
+                     graph.color=$NEON_MAGENTA graph.fill_color=0x40cc44ee \
+                     graph.line_width=1.5 background.drawing=on background.height=24 background.color=0x00000000 \
+                     label.font="Hack Nerd Font:Bold:11.0" label.width=34 \
                      script="$PLUGIN_DIR/gpu.sh" \
-           --add item music right \
+                     click_script="open -a 'Activity Monitor'" \
+           --add graph network right 36 \
+           --set network update_freq=2 icon="NET" icon.color=$NEON_PURPLE \
+                         icon.font="Hack Nerd Font:Bold:10.0" \
+                         graph.color=$NEON_PURPLE graph.fill_color=0x408855ff \
+                         graph.line_width=1.5 background.drawing=on background.height=24 background.color=0x00000000 \
+                         label.drawing=off \
+                         script="/usr/bin/python3 \"$PLUGIN_DIR/network.py\"" \
+                         click_script="open -a 'Activity Monitor'" \
+           --add item music q \
            --set music update_freq=2 icon.color=$NEON_PURPLE \
                        script="$PLUGIN_DIR/music.sh" \
            --add item superwhisper right \
